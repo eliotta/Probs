@@ -1,6 +1,10 @@
 Probs::Application.routes.draw do
-  get "probs/index"
-  get "probs/home"
+
+
+ # get "probs/index"
+ # get "probs/home"
+
+  root 'probs#index'
   resources :probs
 
   # The priority is based upon order of creation: first created -> highest priority.
