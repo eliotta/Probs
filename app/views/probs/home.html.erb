@@ -1,2 +1,265 @@
 <h1>Probs#home</h1>
 <p>Find me in app/views/probs/home.html.erb</p>
+
+
+
+
+<!--
+
+
+
+$ git remote add origin https://github.com/<username>/first_app.git
+$ git push -u origin master
+
+
+  $  git remote add origin https://github.com/eliotta/Prob.git
+  $  git push -u origin master
+
+
+
+
+  check if rspec-rails is installed.
+
+
+
+
+
+
+4 / 2
+
+Setting up a new test based on the video.
+
+
+Called Tasks.
+
+
+This is the gemfile
+gem 'rspec-rails', '~> 2.14.2'
+gem 'capybara', '~> 2.2.1'
+
+Bundle updated and installed.
+
+rails g integration_test tasks
+
+responds with an invoke and create, but nothing else.
+
+Right clicking on the folder created in requests seems to be effective, even though it failed.
+
+The menu works but have to focus on the folder.
+
+Had to put config.include Capybara::DSL in the config block to make it work.
+
+need to add _path when using. i.e. edit_task_path  new_task_path
+
+Need to create a controller.
+
+The controller is rails g controller Tasks.
+
+Not the name is plural and capitalized.
+
+
+ran this again and overwrote the controller. Had to because I didnt add the verb/action. And no view was automatically
+created.
+
+ran
+rails g controller Tasks index
+This created a view, and I added the content. reran the test. which worked.
+finally.
+
+
+
+For Probs, from scratch.
+
+gem 'rails', '4.0.4'
+gem 'sqlite3'
+gem 'sass-rails', '~> 4.0.2'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'jquery-rails'
+gem 'turbolinks'
+gem 'jbuilder', '~> 1.2'
+
+group :doc do
+gem 'sdoc', require: false
+end
+
+group :test, :development do
+gem 'rspec-rails', '~> 2.14.2'
+gem 'capybara', '~> 2.2.1'
+end
+
+group :production do
+  gem 'pg', '0.15.1'
+  gem 'rails_12factor', '0.0.2'
+end
+
+
+do
+rails g rspec:install
+
+add the following to the config file:
+
+add to ignore for gitignore.
+/.idea
+
+Create  a controller and an action, like home, or index.
+The controller is plural capitalized, and looks like the title. i.e. Tasks.
+or Probs.
+
+install a test like the guy did in the tasks video.
+Think it was rails generate integration_test tasks
+This creates the tasks_spec.rb in the spec/requests directory.
+
+
+The tasks video is currently 10 minutes in.
+
+in the routes file, add
+get "tasks/index"
+  resources :tasks
+Need to verify if the get is needed in addition to the resources line.
+
+
+In the Specs folder, in file  spec_helper.rb
+Add  config.include Capybara::DSL below
+RSpec.configure do |config|
+
+For tests, have to hilight a specific folder, and then run the  test for the specific folder. The following test works.
+require 'spec_helper'
+
+describe "Tasks" do
+  describe "GET /tasks" do
+    it 'display some tasks' do
+      visit tasks_path
+      page.should have_content 'some content'
+    end
+  end
+end
+
+This file is tasks_spec.rb.
+
+Whatever rake routes shows, has to have _path appended to it.
+
+Don't remember the details of Github integration, except the following.
+Have to be signed into github on the web.
+can and should do git commits, add, and pushes from a terminal.  But remember to
+put /.idea.* in the gitignore  file.
+
+If trying to do github from the intellij command line, do the VCS integration activation before
+trying to do anything github specific.
+
+
+According to    Hartl, this should run the test.
+$ bundle exec rspec spec/requests/tasks_spec.rb
+and it does.
+
+Need to add the bootstrap gem.
+Possibly the following.   This is converted to Sass, so it may or may not be correct.
+gem 'bootstrap-sass', '~> 3.1.1.0'
+
+
+
+the git stuff was accomplished in the command line.
+Went to github, created a repo.
+did git init.
+git add .
+git commit -m "some commit"
+git push origin master.
+
+Had a problem.
+solved with git pull origin master.
+followed by git push origin master.
+
+Did a second git add git commit git push. This worked also.
+
+
+
+4 / 5 / 2014
+
+	- Build a model.
+	- display  something to the view via the model.
+	- Input something to the view via the model.
+  -  Do some math or function in a method. Display the results to a view.
+
+
+
+To replace the Riding Rails default homepage, doing the following.
+
+Above where put
+resources :probs
+
+putting
+root :to => 'Probs#index'
+
+not the case and nomenclature above is correct.
+
+
+The roots stuff as the video has it doesn't work anymore.
+Maybe it's obsolete?
+
+Now it's
+  root 'probs#index'
+  resources :probs
+
+Note the controller is no longer capitalized.
+
+
+Next up is creating a mode.
+According to the video, its
+rails g model Prob prob:string
+Note that the model is singular. Upper case, and
+the meta field in the db is lower case. This doesnt create the db, just the file for migrate and the model.
+
+worked.
+
+rails g model Prob prob:string
+
+run
+rake db: migrate.
+
+also seemed to work.
+
+at 14:xx, the video suggests opening rails c, for console. Which
+he says is like irb. Also worked.
+
+Couple of things.
+In order to run build have to do
+Prob.conntection.
+
+Then can do just Prob, once in rails c.
+Will display a schema for the table.
+
+Little bit different from the way it used to work.
+
+Showing the contents of the table is accomplished with
+Prob.all
+
+Adding a row via the console.
+
+trying the followng:
+
+Prob.create :prob => 'Go to the store'
+This worked. But when first tried,
+no response.
+
+There was a response on the second try.
+
+
+first putting something into the field prob.
+
+Then Prob.all. Which showed the field as populated.
+
+
+
+trying to add commit and push.
+
+Seems to have worked.
+It was just
+went to github and signed in
+git add .
+git commit -m "some message"
+git push origin master
+
+
+
+
+-->
